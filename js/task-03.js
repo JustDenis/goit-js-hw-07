@@ -16,19 +16,13 @@ const images = [
   },
 ];
 
-const galleryRef = document.querySelector('#gallery');
-
-function createGalleryItem(numberImg) {
-  const galleryList = document.createElement('li');
-  const galleryImg = document.createElement('img');
-  galleryImg.setAttribute('src', images[numberImg].url);
-  galleryImg.setAttribute('alt', images[numberImg].alt);
-  galleryList.append(galleryImg);
-  return galleryList;
+function createGalleryItem(array,elementRef) {
+  const images = array.map(
+    item => `<li><img src="${item.url} alt="${item.alt}"></li>`,
+  );
+  elementRef.insertAdjacentHTML('beforeend', images);
 }
 
-galleryRef.append(
-  createGalleryItem(0),
-  createGalleryItem(1),
-  createGalleryItem(2),
-);
+const galleryRef = document.querySelector('#gallery');
+
+createGalleryItem(images, galleryRef);

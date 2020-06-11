@@ -9,17 +9,16 @@ const ingredients = [
 
 const ingredientsListRef = document.querySelector('#ingredients');
 
-function createListElem(number) {
-  const listElem = document.createElement('li');
-  listElem.textContent = ingredients[number];
-  return listElem;
+function createListItems(items) {
+  const listsArr = items.map(item => {
+    const listElem = document.createElement('li');
+    listElem.textContent = item;
+    return listElem;
+  });
+  return listsArr;
 }
 
-ingredientsListRef.append(
-  createListElem(0),
-  createListElem(1),
-  createListElem(2),
-  createListElem(3),
-  createListElem(4),
-  createListElem(5),
-);
+const listsItems = createListItems(ingredients);
+
+ingredientsListRef.append(...listsItems);
+
