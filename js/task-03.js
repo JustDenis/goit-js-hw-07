@@ -16,13 +16,18 @@ const images = [
   },
 ];
 
-function createGalleryItem(array,elementRef) {
+function addMarckupToHTML(array,elementRef) {
+  const marckupArr = createGalleryItems(array);
+  elementRef.insertAdjacentHTML('beforeend', marckupArr.join(' '));
+}
+
+function createGalleryItems (array) {
   const images = array.map(
     item => `<li><img src="${item.url} alt="${item.alt}"></li>`,
   );
-  elementRef.insertAdjacentHTML('beforeend', images);
+  return images
 }
 
 const galleryRef = document.querySelector('#gallery');
 
-createGalleryItem(images, galleryRef);
+addMarckupToHTML(images, galleryRef);
